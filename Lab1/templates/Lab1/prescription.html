@@ -1,0 +1,20 @@
+{% extends "general/frame.html" %}
+{% block content %}
+<p>Search prescription by your prescription number (VIP account can use name):</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Wyslij</button>
+</form>
+    {% for pre in prescriptions %}
+        <h4> Prescription number : {{ pre.number }}</h4>
+        <h4> Firstname : {{ pre.firstname }} </h4>
+        <h4> Surname : {{ pre.surname }} </h4>
+        <h4> Content: </h4>
+        {{ pre.content }}
+    {% endfor %}
+
+{% endblock content %}
+
+
+
